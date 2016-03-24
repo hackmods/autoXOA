@@ -1,0 +1,66 @@
+Install debian 64 bit netinstall
+
+Name Debian hostname : debianXOA
+Name domainamename : localhost
+Set root password: toor
+Set account : toor
+Set account password: toor
+Select timezone : Eastern
+partiton method : guided - use entire disk
+Select hard drive : choose drive
+select file scheme : all folders in one drive
+Finish choices : yes
+wrtie changes to disk : yes
+Choose package manage country : Canada
+Debian archive mirror : ftp.ca.debian.org
+http proxy :	Continue
+Install GRUB boot loader : Yes
+device for boot loader installation : /dev/xvda
+Installation complete : Continue
+
+Reboot occurs
+
+take snapshot
+
+Install Xen Orchestra 
+
+[as root]
+apt-get --yes --force-yes install curl
+curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
+chmod +x /usr/local/bin/n
+n stable
+
+[optional checks]
+node -v 	>= v5.*
+npm - v		>= 2.7
+
+apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal
+
+[pull as regular user, in ~ dir]
+git clone -b stable http://github.com/vatesfr/xo-server
+git clone -b stable http://github.com/vatesfr/xo-web
+
+cd xo-server
+[as regular user go into xo-Server and run]
+npm install && npm run build
+
+[as root]
+npm start
+[sample result]
+webServer listening on localhost:80
+[INFO] Default user: "admin@admin.net" with password "admin"
+[/sample result]
+
+cd ..
+cd xo-web
+npm install
+
+npm install -g bower	
+
+npm run build
+ 
+ 
+ 
+Useful Links
+https://github.com/vatesfr/xo/blob/master/doc/installation/xoa_installation.md
+https://github.com/vatesfr/xo/blob/master/doc/installation/manual_installation.md
