@@ -11,10 +11,15 @@ The AutoXOA project seeks to install [Xen Orchestra](https://xen-orchestra.com/#
 Instructions are simple, net install the latest version of Debian.
 
 Install curl
+```
 Apt-get install curl
+```
 
 Run the AutoXOA script
+```
 curl -L autoXOA.zxcv.us | bash
+```
+
 
 ## Goals
 ### General
