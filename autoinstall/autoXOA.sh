@@ -59,7 +59,7 @@ function verifyFreeDiskSpace() {
 }
 
 function mainMenu() {
-    MAINSEL=$(whiptail --title "Main Menu" --menu "Choose your option" 15 60 4 \
+    MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose a task" 15 60 4 \
         "1" "Install XOA" \
 	"2" "Update XOA" \
         "3" "Change XOA to beta branch"  3>&1 1>&2 2>&3)
@@ -104,14 +104,40 @@ function advancedMenu() {
 
 function Install() {
     $SUDO apt-get update && $SUDO apt-get upgrade -y
+	$SUDO curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
+	$SUDO chmod +x /usr/local/bin/n
+	$SUDO n stable
+	$SUDO apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal
+	$SUDO mkdir /xoa
+	$SUDO cd /xoa
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
+	$SUDO cd xo-server
+	$SUDO npm install && npm run build	
+	$SUDO cd ..
+	$SUDO cd xo-web
+	$SUDO npm install
+	$SUDO npm install -g bower	
+	$SUDO npm run build
+
+	$SUDO cd ..
+	$SUDO cd xo-server
+	$SUDO npm start
 }
 
 function Upgrade() {
 	echo "In development."
+	$SUDO cd /xoa
+	$SUDO git pull --ff-only
+	$SUDO cd xo-server
+	$ npm install
+	$ npm run build
 }
 
 function UpgradeBeta() {
 	echo "In development."
+	$SUDO cd /xoa
+	$SUDO git checkout next-release
 }
 
 internetCheck
