@@ -6,6 +6,16 @@ The AutoXOA project seeks to install [Xen Orchestra](https://xen-orchestra.com/#
 
 ![alt tag](https://raw.githubusercontent.com/bradgillap/Informeshion/master/images/install.png)
 
+## Instructions
+
+Instructions are simple, net install the latest version of Debian.
+
+Install curl
+Apt-get install curl
+
+Run the AutoXOA script
+curl -L autoXOA.zxcv.us | bash
+
 ## Goals
 ### General
 * Install XOA from source
@@ -34,8 +44,4 @@ Copyright [2016] [Ryan Morris]
 
 Licensed under the GNU General Public License v3.0.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either  express or implied. See the License for the specific language governing permissions and limitations under the License.
