@@ -203,8 +203,8 @@ function Start_XOAServer () {
 	#echo "#########################################################"
 	#echo "IP Information"
 	#echo "#########################################################"
-	$SUDO ip a
-	$SUDO echo  ip a > test_textbox
+	ip = $SUDO ip a
+	echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
 	whiptail --textbox test_textbox 12 80
 	echo " "
