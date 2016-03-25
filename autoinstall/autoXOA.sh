@@ -113,13 +113,12 @@ function Install() {
 	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
 	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
 	$SUDO cd xo-server
-	$SUDO npm install && npm run build	
+	$SUDO npm install #&& npm run build	
 	$SUDO cd ..
 	$SUDO cd xo-web
 	$SUDO npm install
 	$SUDO npm install -g bower	
-	$SUDO npm run build
-
+	#$SUDO npm run build
 	$SUDO cd ..
 	$SUDO cd xo-server
 	$SUDO npm start
