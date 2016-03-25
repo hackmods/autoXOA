@@ -97,7 +97,8 @@ function Install() {
 	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option" 15 60 4 \
         "1" "Install XOA-Server && XOA-Web" \
         "2" "Install XOA-Server" \
-        "3" "Install XOA-Web" 3>&1 1>&2 2>&3)
+        "3" "Install XOA-Web" \
+		"4" "Install autoXOA.sh script" 3>&1 1>&2 2>&3)
 		
     case $InstallSEL in
         1)
@@ -108,7 +109,9 @@ function Install() {
             Install_XOA-server
 			echo "Starting Install_XOA-web install"
 			Install_XOA-web
-			echo "Finished both install sections"
+			echo "Starting autoXOA install"
+			Install_autoXOA
+			echo "All installations have been completed."
 			Start_XOAServer
         ;;
         2)
@@ -125,6 +128,11 @@ function Install() {
 			InitialUpdates
 			echo "Starting Install_XOA-web install"
             Install_XOA-web
+			echo "Finished Install_XOA-web install section"
+        ;;
+		4)
+			echo "User selected to install autoXOA.sh script."
+			Install_autoXOA
 			echo "Finished Install_XOA-web install section"
         ;;
     esac
@@ -199,14 +207,24 @@ function Install_XOA-web () {
 	$SUDO cd ..
 }
 
+function Install_autoXOA () {
+	$SUDO cd /xoa
+	echo "Command: curl -L autoxoa.zxcv.us > autoXOA.sh"
+	$SUDO curl -L autoxoa.zxcv.us > autoXOA.sh
+	$SUDO chmod +x autoXOA.sh
+	$SUDO cd ..
+}
+
 function Start_XOAServer () {
 	#echo "#########################################################"
 	#echo "IP Information"
 	#echo "#########################################################"
-	ip = $SUDO ip a
+	ip = `$SUDO ip a`
 	echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
 	whiptail --textbox test_textbox 12 80
+	echo " "
+	$SUDO echo ip a
 	echo " "
 	$SUDO cd /xoa/xo-server
 	echo "Starting xo-server"
