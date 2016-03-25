@@ -224,7 +224,7 @@ function Start_XOAServer () {
 	#                  filename height width
 	#whiptail --textbox test_textbox 12 80
 	echo " "
-	$SUDO echo ip a
+	$SUDO ip a
 	echo " "
 	$SUDO cd /xoa/xo-server
 	echo "Starting xo-server"
