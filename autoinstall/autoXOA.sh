@@ -216,13 +216,13 @@ function Install_autoXOA () {
 }
 
 function Start_XOAServer () {
-	#echo "#########################################################"
-	#echo "IP Information"
-	#echo "#########################################################"
-	ip = `$SUDO ip a`
-	echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
+	echo "#########################################################"
+	echo "IP Information"
+	echo "#########################################################"
+	#ip = `$SUDO ip a`
+	#echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
-	whiptail --textbox test_textbox 12 80
+	#whiptail --textbox test_textbox 12 80
 	echo " "
 	$SUDO echo ip a
 	echo " "
