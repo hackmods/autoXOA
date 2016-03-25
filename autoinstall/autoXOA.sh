@@ -85,7 +85,6 @@ function mainMenu() {
 				Start_XOAServer
 			;;
         esac
-		mainMenu
 }
 
 function Install() {
@@ -201,10 +200,13 @@ function Install_XOA-web () {
 }
 
 function Start_XOAServer () {
-	echo "#########################################################"
-	echo "IP Information"
-	echo "#########################################################"
+	#echo "#########################################################"
+	#echo "IP Information"
+	#echo "#########################################################"
 	$SUDO ip a
+	$SUDO echo  ip a > test_textbox
+	#                  filename height width
+	whiptail --textbox test_textbox 12 80
 	echo " "
 	$SUDO cd /xoa/xo-server
 	echo "Starting xo-server"
