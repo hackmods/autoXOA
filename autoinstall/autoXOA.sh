@@ -216,9 +216,9 @@ function Install_autoXOA () {
 }
 
 function Start_XOAServer () {
-	echo "#########################################################"
+	#echo "#########################################################"
 	echo "IP Information"
-	echo "#########################################################"
+	#echo "#########################################################"
 	#ip = `$SUDO ip a`
 	#echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
