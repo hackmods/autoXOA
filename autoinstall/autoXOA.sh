@@ -64,7 +64,7 @@ function mainMenu() {
         "1" "Install XOA" \
 		"2" "Update XOA" \
         "3" "Change XOA to beta branch" \
-		"4" "Start XOAServer" 3>&1 1>&2 2>&3)
+		"4" "Start XOA-Server" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
 
@@ -81,10 +81,11 @@ function mainMenu() {
                 UpgradeBeta
             ;; 
 			4)
-                echo "User selected to upgrade XOA to a beta branch"
-                UpgradeBeta
-            ;; 
+				echo "User selected to start XOA-Server."
+				Start_XOAServer
+			;;
         esac
+		mainMenu
 }
 
 function Install() {
@@ -108,6 +109,8 @@ function Install() {
             Install_XOA-server
 			echo "Starting Install_XOA-web install"
 			Install_XOA-web
+			echo "Finished both install sections"
+			Start_XOAServer
         ;;
         2)
             echo "User selected to install XOA-Server."
@@ -115,6 +118,7 @@ function Install() {
 			InitialUpdates
 			echo "Starting Install_XOA-server install"
             Install_XOA-server
+			echo "Finished Install_XOA-server install section"
         ;;
         3)
 			echo "User selected to install XOA-Web."
@@ -122,14 +126,12 @@ function Install() {
 			InitialUpdates
 			echo "Starting Install_XOA-web install"
             Install_XOA-web
-        ;;
-		4)
-			echo "User selected to start XOA-Server."
-            Start_XOAServer
+			echo "Finished Install_XOA-web install section"
         ;;
     esac
 	
-	Start_XOAServer #when complete start server	
+	 #Start_XOAServer #when complete start server	
+	mainMenu #to restart script
 }
 
 function InitialUpdates() {
