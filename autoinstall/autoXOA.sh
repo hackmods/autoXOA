@@ -44,9 +44,9 @@ function internetCheck() {
         echo "Plase connect to the Internet and try running again."
         exit 1
     fi
-
     ## CHECK FREE DISK SPACE ##
 }
+
 function verifyFreeDiskSpace() {
     # Figure out minimum space required. Currently set at 1GB
     requiredFreeBytes=1000000
@@ -81,51 +81,45 @@ function mainMenu() {
         esac
 }
 
-
-function advancedMenu() {
-    ADVSEL=$(whiptail --title "Advanced Menu" --menu "Choose an option" 15 60 4 \
-        "1" "Choose Packages to Install" \
-        "2" "Configure Services" \
-        "3" "Back" 3>&1 1>&2 2>&3)
-    case $ADVSEL in
-        1)
-            echo "User selected Package install."
-            Install
-        ;;
-        2)
-            echo "User selected Configure Services."
-            Upgrade
-        ;;
-        3)
-            UpgradeBeta
-        ;;
-    esac
-}
-
 function Install() {
+	echo "Installing updates"
     $SUDO apt-get update && $SUDO apt-get upgrade -y
+	
+	echo "Installing dependencies"
 	$SUDO curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
 	$SUDO chmod +x /usr/local/bin/n
 	$SUDO n stable
 	$SUDO apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal
+	$SUDO npm install -g bower	#Needed for XOA-Web only
 	$SUDO mkdir /xoa
-	$SUDO cd /xoa
-	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
-	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
-	$SUDO cd xo-server
-	$SUDO npm install #&& npm run build	
-	$SUDO cd ..
-	$SUDO cd xo-web
-	$SUDO npm install
-	$SUDO npm install -g bower	
-	#$SUDO npm run build
-	$SUDO cd ..
-	$SUDO cd xo-server
-	$SUDO npm start
+	
+	echo "Make a selection"
+	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option" 15 60 4 \
+        "1" "Install XOA-Server && XOA-Web" \
+        "2" "Install XOA-Server" \
+        "3" "Install XOA-Web" 3>&1 1>&2 2>&3)
+		
+    case $InstallSEL in
+        1)
+            echo "User selected to install XOA-Server && XOA-Web."
+            Install_XOA-server
+			Install_XOA-web
+        ;;
+        2)
+            echo "User selected to install XOA-Server."
+            Install_XOA-server
+        ;;
+        3)
+			echo "User selected to install XOA-Web."
+            Install_XOA-web
+        ;;
+    esac
+	
+	Start_XOAServer #when complete start server	
 }
 
 function Upgrade() {
-	echo "In development."
+	echo "In development. Attempting upgrade to Xo-Server"
 	$SUDO cd /xoa
 	$SUDO git pull --ff-only
 	$SUDO cd xo-server
@@ -134,11 +128,33 @@ function Upgrade() {
 }
 
 function UpgradeBeta() {
-	echo "In development."
+	echo "In development. Attempting upgrade to next-release"
 	$SUDO cd /xoa
 	$SUDO git checkout next-release
 }
 
-internetCheck
-verifyFreeDiskSpace
+function Install_XOA-server () {
+	$SUDO cd /xoa
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
+	$SUDO cd xo-server
+	$SUDO npm install #&& npm run build	
+	$SUDO cd ..
+}
+
+function Install_XOA-web () {
+	$SUDO cd /xoa
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
+	$SUDO cd ..
+	$SUDO cd xo-web
+	$SUDO npm install
+	$SUDO cd ..
+}
+
+function Start_XOAServer () {
+	$SUDO cd /xoa/xo-server
+	$SUDO npm start
+}
+
+#internetCheck
+#verifyFreeDiskSpace
 mainMenu
