@@ -62,8 +62,9 @@ function verifyFreeDiskSpace() {
 function mainMenu() {
     MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose a task" 15 60 4 \
         "1" "Install XOA" \
-	"2" "Update XOA" \
-        "3" "Change XOA to beta branch"  3>&1 1>&2 2>&3)
+		"2" "Update XOA" \
+        "3" "Change XOA to beta branch" \
+		"4" "Start XOAServer" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
 
@@ -79,10 +80,59 @@ function mainMenu() {
                 echo "User selected to upgrade XOA to a beta branch"
                 UpgradeBeta
             ;; 
+			4)
+                echo "User selected to upgrade XOA to a beta branch"
+                UpgradeBeta
+            ;; 
         esac
 }
 
 function Install() {
+	if [ ! -d "/xoa" ]; then 
+	echo "Command: mkdir /xoa"
+	$SUDO mkdir /xoa
+	fi
+	
+	echo "Make a selection"
+	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option" 15 60 4 \
+        "1" "Install XOA-Server && XOA-Web" \
+        "2" "Install XOA-Server" \
+        "3" "Install XOA-Web" 3>&1 1>&2 2>&3)
+		
+    case $InstallSEL in
+        1)
+            echo "User selected to install XOA-Server && XOA-Web."
+			echo "Performing initial updates"
+			InitialUpdates
+			echo "Starting Install_XOA-server install"
+            Install_XOA-server
+			echo "Starting Install_XOA-web install"
+			Install_XOA-web
+        ;;
+        2)
+            echo "User selected to install XOA-Server."
+			echo "Performing initial updates"
+			InitialUpdates
+			echo "Starting Install_XOA-server install"
+            Install_XOA-server
+        ;;
+        3)
+			echo "User selected to install XOA-Web."
+			echo "Performing initial updates"
+			InitialUpdates
+			echo "Starting Install_XOA-web install"
+            Install_XOA-web
+        ;;
+		4)
+			echo "User selected to start XOA-Server."
+            Start_XOAServer
+        ;;
+    esac
+	
+	Start_XOAServer #when complete start server	
+}
+
+function InitialUpdates() {
 	echo "Installing updates"
     $SUDO apt-get update && $SUDO apt-get upgrade -y
 	
@@ -95,34 +145,6 @@ function Install() {
 	$SUDO apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal
 	echo "Command: npm install -g bower"
 	$SUDO npm install -g bower	#Needed for XOA-Web only
-	echo "Command: mkdir /xoa"
-	$SUDO mkdir /xoa
-	
-	echo "Make a selection"
-	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option" 15 60 4 \
-        "1" "Install XOA-Server && XOA-Web" \
-        "2" "Install XOA-Server" \
-        "3" "Install XOA-Web" 3>&1 1>&2 2>&3)
-		
-    case $InstallSEL in
-        1)
-            echo "User selected to install XOA-Server && XOA-Web."
-			echo "Starting Install_XOA-server install"
-            Install_XOA-server
-			echo "Starting Install_XOA-web install"
-			Install_XOA-web
-        ;;
-        2)
-            echo "User selected to install XOA-Server."
-            Install_XOA-server
-        ;;
-        3)
-			echo "User selected to install XOA-Web."
-            Install_XOA-web
-        ;;
-    esac
-	
-	Start_XOAServer #when complete start server	
 }
 
 function Upgrade() {
@@ -177,6 +199,11 @@ function Install_XOA-web () {
 }
 
 function Start_XOAServer () {
+	echo "#########################################################"
+	echo "IP Information"
+	echo "#########################################################"
+	$SUDO ip a
+	echo " "
 	$SUDO cd /xoa/xo-server
 	echo "Starting xo-server"
 	$SUDO npm start
