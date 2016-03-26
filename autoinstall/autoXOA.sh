@@ -162,12 +162,22 @@ function Upgrade() {
 	echo "Current Dir"
 	pwd
 	echo "Command: git pull"
-	$SUDO git pull --ff-only
+	$SUDO git pull --ff-only http://github.com/vatesfr/xo-server
 	$SUDO cd xo-server
 	echo "Command: npm install"
 	$ npm install
 	echo "Command: npm run build"
 	$ npm run build
+	$SUDO cd ..
+	echo "Attempting upgrade to Xo-Web"
+	echo "Command: git pull"
+	$SUDO git pull --ff-only http://github.com/vatesfr/xo-web
+	$SUDO cd xo-web
+	echo "Command: npm install"
+	$ npm install
+	echo "Command: npm run build"
+	$ npm run build
+	
 }
 
 function UpgradeBeta() {
