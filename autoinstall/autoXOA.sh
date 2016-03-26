@@ -85,6 +85,7 @@ function mainMenu() {
 				Start_XOAServer
 			;;
         esac
+		mainMenu
 }
 
 function Install() {
