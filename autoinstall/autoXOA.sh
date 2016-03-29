@@ -268,8 +268,8 @@ function Start_XOAServer () {
 
 function Install_Forever () {
 	echo "Starting Forever install."
-	echo "Command: Forever start bin/xo-server"
-	$SUDO forever start bin/xo-server
+	echo "Command: npm install -g forever"
+	$SUDO npm install -g forever
 }
 
 function Start_Forever () {
