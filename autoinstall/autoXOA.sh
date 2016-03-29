@@ -13,6 +13,7 @@ echo '########################################################'
 
 ## MENU VARIABLES
  MAINSEL=""
+ DEVSEL=""
  PKGSEL=""
  ADVSEL=""
 InstallSEL=""
@@ -62,15 +63,40 @@ function verifyFreeDiskSpace() {
 function mainMenu() {
     MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose an option:" 15 60 4 \
         "1" "Install XOA" \
-		"2" "Update XOA [Under development]" \
-        "3" "Change XOA to beta branch [Under development]" \
-		"4" "Start XOA-Server" 3>&1 1>&2 2>&3)
+		"2" "Developer Menu" \    
+		"3" "Start XOA-Server" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
 
             1)
                 echo "User selected to install XOA"
                 Install
+            ;;
+            2)
+                echo "User selected developer XOA [Under development]"
+                devMenu
+            ;; 
+			3)
+				echo "User selected to start XOA-Server."
+				Start_XOAServer
+			;;
+        esac
+		echo "Thank you for using AutoXOA. Leave feedback at zxcv.us or contribute to the Github project."
+}
+
+function devMenu() {
+    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 4 \
+        "1" "Install Forever [NPM]" \
+		"2" "Update XOA [Under development]" \
+        "3" "Change XOA to beta branch [Under development]" \
+		"4" "Start Forever XOA-Server" 3>&1 1>&2 2>&3)
+
+        case $DEVSEL in
+
+            1)
+                echo "User selected to install XOA"
+                Install_Forever
+				Start_Forever				
             ;;
             2)
                 echo "User selected to upgrade XOA [Under development]"
@@ -81,11 +107,11 @@ function mainMenu() {
                 UpgradeBeta
             ;; 
 			4)
-				echo "User selected to start XOA-Server."
-				Start_XOAServer
+				echo "User selected to start XOA-Server via Forever."
+				Start_Forever
 			;;
         esac
-		echo "Thank you for using AutoXOA. Leave feedback at zxcv.us or contribute to the Github project."
+		mainMenu #return to main menu
 }
 
 function Install() {
@@ -255,6 +281,18 @@ else
     echo "Canceled."
 fi
 }
+
+function Install_Forever () {
+	echo "Starting Forever install."
+	echo "Command: Forever start bin/xo-server"
+	$SUDO forever start bin/xo-server
+}
+
+function Start_Forever () {
+	echo "Starting Forever server."
+	$SUDO forever start bin/xo-server
+}
+
 #internetCheck
 #verifyFreeDiskSpace
 mainMenu
