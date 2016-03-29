@@ -280,4 +280,3 @@ function Start_Forever () {
 #internetCheck
 #verifyFreeDiskSpace
 mainMenu
-Install
