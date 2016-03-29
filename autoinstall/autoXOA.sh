@@ -60,7 +60,7 @@ function verifyFreeDiskSpace() {
 }
 
 function mainMenu() {
-    MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose a task" 15 60 4 \
+    MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose an option:" 15 60 4 \
         "1" "Install XOA" \
 		"2" "Update XOA [Under development]" \
         "3" "Change XOA to beta branch [Under development]" \
@@ -85,7 +85,7 @@ function mainMenu() {
 				Start_XOAServer
 			;;
         esac
-		echo "Thank you fo"
+		echo "Thank you for using AutoXOA. Leave feedback at zxcv.us or contribute to the Github project."
 }
 
 function Install() {
@@ -95,7 +95,7 @@ function Install() {
 	fi
 	
 	echo "Make a selection"
-	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option" 15 60 4 \
+	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option:" 15 60 4 \
         "1" "Install XOA-Server && XOA-Web" \
         "2" "Install XOA-Server" \
         "3" "Install XOA-Web" \
