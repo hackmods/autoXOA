@@ -62,8 +62,8 @@ function verifyFreeDiskSpace() {
 function mainMenu() {
     MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose a task" 15 60 4 \
         "1" "Install XOA" \
-		"2" "Update XOA" \
-        "3" "Change XOA to beta branch" \
+		"2" "Update XOA [Under development]" \
+        "3" "Change XOA to beta branch [Under development]" \
 		"4" "Start XOA-Server" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
@@ -73,11 +73,11 @@ function mainMenu() {
                 Install
             ;;
             2)
-                echo "User selected to upgrade XOA"
+                echo "User selected to upgrade XOA [Under development]"
                 Upgrade
             ;; 
             3)
-                echo "User selected to upgrade XOA to a beta branch"
+                echo "User selected to upgrade XOA to a beta branch [Under development]"
                 UpgradeBeta
             ;; 
 			4)
@@ -228,12 +228,12 @@ function Install_autoXOA () {
 }
 
 function Start_XOAServer () {
-	ip = $($SUDO ip a)
+	#ip = $($SUDO ip a)
 	#echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
 	#whiptail --textbox test_textbox 12 80
-	whiptail --title "Example Dialog" --msgbox "IP Configuration \n $ip \n Click Okay to start XOA-Server." 3>&1 1>&2 2>&3
-	echo " "
+	#whiptail --title "Example Dialog" --msgbox "IP Configuration \n $ip \n Click Okay to start XOA-Server." 3>&1 1>&2 2>&3
+	echo "IP Configuration"
 	$SUDO ip a
 	echo " "
 	$SUDO cd /xoa/xo-server
