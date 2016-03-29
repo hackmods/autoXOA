@@ -99,7 +99,8 @@ function Install() {
         "1" "Install XOA-Server && XOA-Web" \
         "2" "Install XOA-Server" \
         "3" "Install XOA-Web" \
-		"4" "Install autoXOA.sh script" 3>&1 1>&2 2>&3)
+		"4" "Install autoXOA.sh script" \
+		"5" "Return to main menu" 3>&1 1>&2 2>&3)
 		
     case $InstallSEL in
         1)
@@ -227,13 +228,11 @@ function Install_autoXOA () {
 }
 
 function Start_XOAServer () {
-	#echo "#########################################################"
-	echo "IP Information"
-	#echo "#########################################################"
-	#ip = `$SUDO ip a`
+	ip = $($SUDO ip a)
 	#echo "IP Configuration \n $ip \n Click Okay to start XOA-Server." > test_textbox
 	#                  filename height width
 	#whiptail --textbox test_textbox 12 80
+	whiptail --title "Example Dialog" --msgbox "IP Configuration \n $ip \n Click Okay to start XOA-Server." 3>&1 1>&2 2>&3
 	echo " "
 	$SUDO ip a
 	echo " "
@@ -242,6 +241,21 @@ function Start_XOAServer () {
 	$SUDO npm start
 }
 
+function SetDir () {
+
+user_name=/xoa/user_name.txt
+
+whiptail --backtitle "A Simple User Interface" \
+         --inputbox "User Name:" 10 20 \
+         2> "$user_name"
+
+if [ $? = 0 ]; then
+    echo "The user name is "`cat "$user_name"`
+else
+    rm -f "$user_name"
+    echo "Canceled."
+fi
+}
 #internetCheck
 #verifyFreeDiskSpace
 mainMenu

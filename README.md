@@ -2,13 +2,13 @@
 
 ## Purpose
 
-The AutoXOA project seeks to install [Xen Orchestra](https://xen-orchestra.com/#!/) from source. The purpose is to automate the procedure for developer environments and home lab use.
+The AutoXOA project installs and configures [Xen Orchestra](https://xen-orchestra.com/#!/) from source. The purpose is to automate the procedure for developer environments and home lab use.
 
-![alt tag](https://raw.githubusercontent.com/bradgillap/Informeshion/master/images/install.png)
+![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/images/InstallMenu.pmg)
 
 ## Instructions
 
-Instructions are simple, net install the latest version of Debian.
+To set up AutoXOA, all you need is a Debian install or variant such as Ubuntu. First install curl. Execute the preceding curl command to retrieve and run the autoXOA script.
 
 Install curl
 ```
@@ -20,10 +20,12 @@ Run the AutoXOA script
 curl -L autoXOA.zxcv.us | bash
 ```
 
+And thats it! The default installation is in /xoa/. Preceding instalation, you can start the XO-server package from the autoXOA script. The script is installed in /xoa/autoXOA.sh.
+
+![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/images/StartXOA.pmg)
 
 ## Goals
 ### General
-* Install XOA from source
 * Support auto updating of XOA via NPM
 * Allow for branch switching between stable and development builds
 
@@ -32,13 +34,16 @@ curl -L autoXOA.zxcv.us | bash
 #### Stage 1
 - [x] Build a prototype layout. 
 - [x] Gather commands for installation from source.
-- [ ] Write curl script to run tasks automatically.
-- [ ] Develop automatic updates
+- [x] Write curl script to run tasks automatically.
+- [x] Complete autopilot install.
+- [ ] Develop automatic updates.
 
 #### Stage 2
-- [ ] Bash script the prototype for consumption with curl by the community.
+- [ ] Configure static ip addressing.
+- [ ] Enable service starting on boot.
+- [ ] Supress output from sever [run in  background]
 - [ ] Build a community portal feedback website.
-- [ ] Release preconfigured images.
+- [ ] Release preconfigured image.
 
 ## Questions:
 
