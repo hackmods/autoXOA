@@ -12,10 +12,10 @@ echo '######################################################'
  exitstatus=""
 
 ## MENU VARIABLES
- MAINSEL=""
- DEVSEL=""
- PKGSEL=""
- ADVSEL=""
+MAINSEL=""
+DEVSEL=""
+PKGSEL=""
+ADVSEL=""
 InstallSEL=""
 
 ## ROOT CHECK ## 
@@ -68,7 +68,6 @@ function mainMenu() {
 		"3" "Start XOA-Server" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
-
             1)
                 echo "User selected to install XOA"
                 Install
@@ -267,21 +266,6 @@ function Start_XOAServer () {
 	$SUDO npm start
 }
 
-function SetDir () {
-
-user_name=/xoa/user_name.txt
-
-whiptail --backtitle "A Simple User Interface" \
-         --inputbox "User Name:" 10 20 \
-         2> "$user_name"
-
-if [ $? = 0 ]; then
-    echo "The user name is "`cat "$user_name"`
-else
-    rm -f "$user_name"
-    echo "Canceled."
-fi
-}
 
 function Install_Forever () {
 	echo "Starting Forever install."
@@ -297,3 +281,4 @@ function Start_Forever () {
 #internetCheck
 #verifyFreeDiskSpace
 mainMenu
+Install
