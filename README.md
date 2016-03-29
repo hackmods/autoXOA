@@ -4,7 +4,7 @@
 
 The AutoXOA project installs and configures [Xen Orchestra](https://xen-orchestra.com/#!/) from source. The purpose is to automate the procedure for developer environments and home lab use.
 
-![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/images/InstallMenu.pmg)
+![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/images/InstallMenu.png)
 
 ## Instructions
 
@@ -22,7 +22,7 @@ curl -L autoXOA.zxcv.us | bash
 
 And thats it! The default installation is in /xoa/. Preceding instalation, you can start the XO-server package from the autoXOA script. The script is installed in /xoa/autoXOA.sh.
 
-![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/images/StartXOA.pmg)
+![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/images/startXOA.PNG)
 
 ## Goals
 ### General
