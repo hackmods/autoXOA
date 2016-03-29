@@ -85,7 +85,7 @@ function mainMenu() {
 				Start_XOAServer
 			;;
         esac
-		mainMenu
+		echo "Thank you for using AutoXOA."
 }
 
 function Install() {
