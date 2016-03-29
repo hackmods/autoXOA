@@ -61,10 +61,9 @@ function verifyFreeDiskSpace() {
 }
 
 function mainMenu() {
-	echo "loading menu..."
     MAINSEL=$(whiptail --title "AutoXOA Main Menu" --menu "Choose an option:" 15 60 4 \
-        "1" "Install XOA" \
-		"2" "Developer Menu" \    
+		"1" "Install XOA" \
+		"2" "Developer Menu" \
 		"3" "Start XOA-Server" 3>&1 1>&2 2>&3)
 
         case $MAINSEL in
