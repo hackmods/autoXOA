@@ -85,7 +85,7 @@ function mainMenu() {
 				Start_XOAServer
 			;;
         esac
-		echo "Thank you for using AutoXOA."
+		echo "Thank you fo"
 }
 
 function Install() {
@@ -99,8 +99,7 @@ function Install() {
         "1" "Install XOA-Server && XOA-Web" \
         "2" "Install XOA-Server" \
         "3" "Install XOA-Web" \
-		"4" "Install autoXOA.sh script" \
-		"5" "Return to main menu" 3>&1 1>&2 2>&3)
+		"4" "Install autoXOA.sh script" 3>&1 1>&2 2>&3)
 		
     case $InstallSEL in
         1)
