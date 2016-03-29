@@ -110,7 +110,7 @@ function devMenu() {
 				Start_Forever
 			;;
         esac
-		mainMenu #return to main menu
+		#mainMenu #return to main menu
 }
 
 function Install() {
