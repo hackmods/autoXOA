@@ -88,12 +88,14 @@ function devMenu() {
         "1" "Install Forever [NPM]" \
 		"2" "Update XOA [Under development]" \
         "3" "Change XOA to beta branch [Under development]" \
-		"4" "Start Forever XOA-Server" 3>&1 1>&2 2>&3)
+		"4" "Start Forever XOA-Server" \
+		"5" "Install Nodemon [NPM]" \
+		"6" "Start Nodemon XOA-Server" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
 
             1)
-                echo "User selected to install XOA"
+                echo "User selected to install Forever"
                 Install_Forever
 				Start_Forever				
             ;;
@@ -109,8 +111,17 @@ function devMenu() {
 				echo "User selected to start XOA-Server via Forever."
 				Start_Forever
 			;;
+			5)
+				echo "User selected to install Nodemon"
+				Install_Nodemon
+				Start_Nodemon
+			;;
+			6)
+				echo "User selected to start XOA-Server via Nodemon."
+				Start_Nodemon
+			;;
         esac
-		#mainMenu #return to main menu
+		mainMenu #return to main menu
 }
 
 function Install() {
@@ -274,7 +285,19 @@ function Install_Forever () {
 
 function Start_Forever () {
 	echo "Starting Forever server."
-	$SUDO forever start bin/xo-server
+	$SUDO forever start /bin/xo-server
+}
+
+function Install_Nodemon () {
+	echo "Starting Nodemon install."
+	echo "Command: npm install -g nodemon"
+	$SUDO npm install -g nodemon
+}
+
+function Start_Nodemon () {
+	echo "Starting Nodemon [under develpment]."
+	$SUDO cd /xoa/xo-server
+	$SUDO nodemon npm start
 }
 
 #internetCheck
