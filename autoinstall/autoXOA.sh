@@ -70,10 +70,12 @@ function mainMenu() {
             1)
                 echo "User selected to install XOA"
                 Install
+				mainMenu
             ;;
             2)
                 echo "User selected developer XOA [Under development]"
                 devMenu
+				mainMenu
             ;; 
 			3)
 				echo "User selected to start XOA-Server."
@@ -95,27 +97,37 @@ function devMenu() {
             1)
                 echo "User selected to upgrade XOA [Under development]"
                 Upgrade
+				devMenu
             ;; 
             2)
                 echo "User selected to upgrade XOA to a beta branch [Under development]"
                 UpgradeBeta
+				devMenu
             ;;
             3)
                 echo "User selected to install Forever"
                 Install_Forever
-				Start_Forever				
+				Start_Forever	
+				devMenu				
             ;;			
 			4)
 				echo "User selected to start XOA-Server via Forever."
 				Start_Forever
+				devMenu
 			;;
 			5)
 				echo "User selected to view Forever logs."
 				Forever_Logs
+				devMenu
 			;;
 			6)
 				echo "User selected to stop XOA-Server via Forever."
 				Forever_Stop
+				devMenu
+			;;
+			7)
+				echo "User selected to view main menu."
+				mainMenu
 			;;
 			#5)
 			#	echo "User selected to install Nodemon"
@@ -127,7 +139,7 @@ function devMenu() {
 			#	Start_Nodemon
 			#;;
         esac
-		devMenu #return to main menu
+		#devMenu #return to main menu
 }
 
 function Install() {
@@ -156,6 +168,7 @@ function Install() {
 			Install_autoXOA
 			echo "All installations have been completed."
 			Start_XOAServer
+			mainMenu
         ;;
         2)
             echo "User selected to install XOA-Server."
@@ -164,6 +177,7 @@ function Install() {
 			echo "Starting Install_XOA-server install"
             Install_XOA-server
 			echo "Finished Install_XOA-server install section"
+			Install
         ;;
         3)
 			echo "User selected to install XOA-Web."
@@ -172,16 +186,18 @@ function Install() {
 			echo "Starting Install_XOA-web install"
             Install_XOA-web
 			echo "Finished Install_XOA-web install section"
+			Install
         ;;
 		4)
 			echo "User selected to install autoXOA.sh script."
 			Install_autoXOA
 			echo "Finished Install_XOA-web install section"
+			Install
         ;;
     esac
 	
 	 #Start_XOAServer #when complete start server	
-	Install #to restart script
+	#Install #to restart script
 }
 
 function InitialUpdates() {
