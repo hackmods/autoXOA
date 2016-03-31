@@ -85,13 +85,14 @@ function mainMenu() {
 }
 
 function devMenu() {
-    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 6 \
+    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 7 \
 		"1" "Update XOA [Under development]" \
         "2" "Change XOA to beta branch [Under development]" \
 		"3" "Install Forever [NPM]" \
 		"4" "Start Forever XOA-Server" \
 		"5" "View Forever Logs" \
-		"6" "Stop Forever process" 3>&1 1>&2 2>&3)
+		"6" "Stop Forever process" \
+		"7" "Main Menu" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
             1)
@@ -149,11 +150,12 @@ function Install() {
 	fi
 	
 	echo "Make a selection"
-	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option:" 15 60 4 \
+	InstallSEL=$(whiptail --title "Install Menu" --menu "Choose an option:" 15 60 5 \
         "1" "Install XOA-Server && XOA-Web" \
         "2" "Install XOA-Server" \
         "3" "Install XOA-Web" \
-		"4" "Install autoXOA.sh script" 3>&1 1>&2 2>&3)
+		"4" "Install autoXOA.sh script" \
+		"5" "Main Menu" 3>&1 1>&2 2>&3)
 		
     case $InstallSEL in
         1)
@@ -194,6 +196,10 @@ function Install() {
 			echo "Finished Install_XOA-web install section"
 			Install
         ;;
+		5)
+			echo "User selected to view main menu."
+			mainMenu
+		;;
     esac
 	
 	 #Start_XOAServer #when complete start server	
