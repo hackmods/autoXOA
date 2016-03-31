@@ -79,8 +79,7 @@ function mainMenu() {
 				echo "User selected to start XOA-Server."
 				Start_XOAServer
 			;;
-        esac
-		echo "Thank you for using AutoXOA. Leave feedback at zxcv.us or contribute to the Github project."
+        esac	
 }
 
 function devMenu() {
@@ -128,7 +127,7 @@ function devMenu() {
 			#	Start_Nodemon
 			#;;
         esac
-		mainMenu #return to main menu
+		devMenu #return to main menu
 }
 
 function Install() {
@@ -182,7 +181,7 @@ function Install() {
     esac
 	
 	 #Start_XOAServer #when complete start server	
-	mainMenu #to restart script
+	Install #to restart script
 }
 
 function InitialUpdates() {
@@ -308,8 +307,8 @@ function Forever_Stop () {
 	$SUDO forever stop 0
 }
 
-
 #functionality may be removed
+
 function Install_Nodemon () {
 	echo "Starting Nodemon install."
 	echo "Command: npm install -g nodemon"
@@ -325,3 +324,4 @@ function Start_Nodemon () {
 #internetCheck
 #verifyFreeDiskSpace
 mainMenu
+echo "Thank you for using AutoXOA. Leave feedback at zxcv.us or contribute to the Github project."
