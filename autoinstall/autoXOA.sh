@@ -84,42 +84,49 @@ function mainMenu() {
 }
 
 function devMenu() {
-    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 4 \
-        "1" "Install Forever [NPM]" \
-		"2" "Update XOA [Under development]" \
-        "3" "Change XOA to beta branch [Under development]" \
+    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 6 \
+		"1" "Update XOA [Under development]" \
+        "2" "Change XOA to beta branch [Under development]" \
+		"3" "Install Forever [NPM]" \
 		"4" "Start Forever XOA-Server" \
-		"5" "Install Nodemon [NPM]" \
-		"6" "Start Nodemon XOA-Server" 3>&1 1>&2 2>&3)
+		"5" "View Forever Logs" \
+		"6" "Stop Forever process" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
-
             1)
-                echo "User selected to install Forever"
-                Install_Forever
-				Start_Forever				
-            ;;
-            2)
                 echo "User selected to upgrade XOA [Under development]"
                 Upgrade
             ;; 
-            3)
+            2)
                 echo "User selected to upgrade XOA to a beta branch [Under development]"
                 UpgradeBeta
-            ;; 
+            ;;
+            3)
+                echo "User selected to install Forever"
+                Install_Forever
+				Start_Forever				
+            ;;			
 			4)
 				echo "User selected to start XOA-Server via Forever."
 				Start_Forever
 			;;
 			5)
-				echo "User selected to install Nodemon"
-				Install_Nodemon
-				Start_Nodemon
+				echo "User selected to view Forever logs."
+				Forever_Logs
 			;;
 			6)
-				echo "User selected to start XOA-Server via Nodemon."
-				Start_Nodemon
+				echo "User selected to stop XOA-Server via Forever."
+				Forever_Stop
 			;;
+			#5)
+			#	echo "User selected to install Nodemon"
+			#	Install_Nodemon
+			#	Start_Nodemon
+			#;;
+			#6)
+			#	echo "User selected to start XOA-Server via Nodemon."
+			#	Start_Nodemon
+			#;;
         esac
 		mainMenu #return to main menu
 }
@@ -284,10 +291,25 @@ function Install_Forever () {
 }
 
 function Start_Forever () {
+	$SUDO forever stop 0 #stop to prevent duplicate instances
+	echo "IP Configuration"
+	$SUDO ip a
 	echo "Starting Forever server."
-	$SUDO forever start /bin/xo-server
+	$SUDO forever start -c "npm start" /xoa/xo-server/
 }
 
+function Forever_Logs () {
+	echo "Viewing Forever logs."
+	$SUDO forever logs 0
+}
+
+function Forever_Stop () {
+	echo "Stopping Forever server."
+	$SUDO forever stop 0
+}
+
+
+#functionality may be removed
 function Install_Nodemon () {
 	echo "Starting Nodemon install."
 	echo "Command: npm install -g nodemon"
