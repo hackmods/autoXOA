@@ -92,6 +92,7 @@ function devMenu() {
 		"4" "Start Forever XOA-Server" \
 		"5" "View Forever Logs" \
 		"6" "Stop Forever process" \
+		"7" "Other OS Install Menu [Under development]"
 		"7" "Main Menu" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
@@ -127,6 +128,10 @@ function devMenu() {
 				devMenu
 			;;
 			7)
+				echo "User selected to view OS menu."
+				devMenu
+			;;
+			8)
 				echo "User selected to view main menu."
 				mainMenu
 			;;
@@ -143,6 +148,42 @@ function devMenu() {
 		#devMenu #return to main menu
 }
 
+function OSMenu() {
+	OSSEL=$(whiptail --title "AutoXOA OS Menu" --menu "Choose an option: [Under Development]" 15 60 7 \
+		"1" "Install Fedora XOA [Under development]" \
+		"1" "Install OpenSUSE XOA [Under development]" \
+		"3" "Install Ubuntu XOA [Under development]" \
+		"4" "Main Menu" 3>&1 1>&2 2>&3)
+
+        case $OSSEL in
+            1)
+                echo "User selected to in stall Dev_Fedora XOA [Under development]"
+				Dev_Fedora
+            ;;
+            2)
+                echo "User selected to in stall Dev_SUSE XOA [Under development]"
+				Dev_SUSE
+            ;; 
+            3)
+                echo "User selected to in stall Dev_Ubuntu XOA [Under development]"
+				Dev_Ubuntu
+            ;; 			
+			4)
+				echo "User selected to view main menu."
+				mainMenu
+			;;
+			#5)
+			#	echo "User selected to install Nodemon"
+			#	Install_Nodemon
+			#	Start_Nodemon
+			#;;
+			#6)
+			#	echo "User selected to start XOA-Server via Nodemon."
+			#	Start_Nodemon
+			#;;
+        esac
+			}
+			
 function Install() {
 	if [ ! -d "/xoa" ]; then 
 	echo "Command: mkdir /xoa"
@@ -341,6 +382,18 @@ function Start_Nodemon () {
 	echo "Starting Nodemon [under develpment]."
 	$SUDO cd /xoa/xo-server
 	$SUDO nodemon npm start
+}
+
+function Dev_Fedora () {
+	echo "Starting Fedora Install]."
+}
+
+function Dev_SUSE () {
+	echo "Starting OpenSUSE Install]."
+}
+
+function Dev_Ubuntu () {
+	echo "Starting Ubuntu Install]."
 }
 
 #internetCheck
