@@ -75,7 +75,6 @@ function mainMenu() {
             2)
                 echo "User selected developer XOA [Under development]"
                 devMenu
-				mainMenu
             ;; 
 			3)
 				echo "User selected to start XOA-Server."
