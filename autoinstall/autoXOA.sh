@@ -85,7 +85,7 @@ function mainMenu() {
 }
 
 function devMenu() {
-    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 7 \
+    DEVSEL=$(whiptail --title "AutoXOA Development Menu" --menu "Choose an option: [Under Development]" 15 60 8 \
 		"1" "Update XOA [Under development]" \
         "2" "Change XOA to beta branch [Under development]" \
 		"3" "Install Forever [NPM]" \
@@ -93,7 +93,7 @@ function devMenu() {
 		"5" "View Forever Logs" \
 		"6" "Stop Forever process" \
 		"7" "Other OS Install Menu [Under development]"
-		"7" "Main Menu" 3>&1 1>&2 2>&3)
+		"8" "Main Menu" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
             1)
