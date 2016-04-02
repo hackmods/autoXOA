@@ -91,7 +91,7 @@ function devMenu() {
 		"4" "Start Forever XOA-Server" \
 		"5" "View Forever Logs" \
 		"6" "Stop Forever process" \
-		"7" "Other OS Install Menu [Under development]"
+		"7" "Other OS Install Menu [Under development]" \
 		"8" "Main Menu" 3>&1 1>&2 2>&3)
 
         case $DEVSEL in
@@ -148,7 +148,7 @@ function devMenu() {
 }
 
 function OSMenu() {
-	OSSEL=$(whiptail --title "AutoXOA OS Menu" --menu "Choose an option: [Under Development]" 15 60 7 \
+	OSSEL=$(whiptail --title "AutoXOA OS Menu" --menu "Choose an option: [Under Development]" 15 60 4 \
 		"1" "Install Fedora XOA [Under development]" \
 		"1" "Install OpenSUSE XOA [Under development]" \
 		"3" "Install Ubuntu XOA [Under development]" \
