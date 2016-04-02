@@ -128,7 +128,7 @@ function devMenu() {
 			;;
 			7)
 				echo "User selected to view OS menu."
-				devMenu
+				OSMenu
 			;;
 			8)
 				echo "User selected to view main menu."
