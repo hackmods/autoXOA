@@ -391,6 +391,48 @@ function Dev_SUSE () {
 	echo "Starting OpenSUSE Install]."
 }
 
+function SUSEInitialUpdates() {
+	echo "Installing updates"
+    $SUDO apt-get update && $SUDO apt-get upgrade -y
+	
+	echo "Installing dependencies"
+	echo "Command: curl + n stable"
+	$SUDO curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
+	$SUDO chmod +x /usr/local/bin/n
+	$SUDO n stable
+	echo "Command: apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal"
+	$SUDO apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal
+	echo "Command: npm install -g bower"
+	$SUDO npm install -g bower	#Needed for XOA-Web only
+}
+
+function SUSE_Install_XOA-server () {
+	$SUDO cd /xoa
+	echo "Command: git clone -b stable http://github.com/vatesfr/xo-server"
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
+	$SUDO cd xo-server
+	echo "Command: npm install"
+	$SUDO npm install 
+	echo "Command: npm run build"
+	$SUDO npm run build	
+	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	$SUDO cd ..
+}
+
+function SUSE_Install_XOA-web () {
+	$SUDO cd /xoa
+	echo "Command: git clone -b stable http://github.com/vatesfr/xo-web"
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
+	$SUDO cd xo-web
+	echo "Command: npm install"
+	$SUDO npm install
+	echo "Command: npm run build	"
+	$SUDO npm run build	
+	$SUDO cd ..
+}
+
+
 function Dev_Ubuntu () {
 	echo "Starting Ubuntu Install]."
 }
