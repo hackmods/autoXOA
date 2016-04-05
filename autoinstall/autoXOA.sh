@@ -392,7 +392,7 @@ function Dev_Fedora () {
 
 function Fedora_Initial_Updates() {
 	echo "Installing updates"
-    $SUDO zypper update -y
+   # $SUDO zypper update -y
 	echo "Installing dependencies"
 	echo "Command: curl + n stable"
 	$SUDO curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
@@ -481,6 +481,50 @@ function SUSE_Install_XOA-web () {
 
 function Dev_Ubuntu () {
 	echo "Starting Ubuntu Install]."
+	Ubuntu_Initial_Updates
+	Ubuntu_Install_XOA-server
+	Ubuntu_Install_XOA-web
+}
+
+
+function Ubuntu_Initial_Updates() {
+	echo "Installing updates"
+   # $SUDO zypper update -y
+	echo "Installing dependencies"
+	echo "Command: curl + n stable"
+	$SUDO curl -o /usr/local/bin/n https://raw.githubusercontent.com/visionmedia/n/master/bin/n
+	$SUDO chmod +x /usr/local/bin/n
+	$SUDO n stable
+	echo "Command: apt-get --yes --force-yes install build-essential redis-server libpng-dev git python-minimal"
+	$SUDO zypper install -y build-essential redis-server libpng-dev git python-minimal
+	echo "Command: npm install -g bower"
+	$SUDO npm install -g bower	#Needed for XOA-Web only
+}
+
+function Ubuntu_Install_XOA-server () {
+	$SUDO cd /xoa
+	echo "Command: git clone -b stable http://github.com/vatesfr/xo-server"
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
+	$SUDO cd xo-server
+	echo "Command: npm install"
+	$SUDO npm install 
+	echo "Command: npm run build"
+	$SUDO npm run build	
+	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	$SUDO cd ..
+}
+
+function Ubuntu_Install_XOA-web () {
+	$SUDO cd /xoa
+	echo "Command: git clone -b stable http://github.com/vatesfr/xo-web"
+	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
+	$SUDO cd xo-web
+	echo "Command: npm install"
+	$SUDO npm install
+	echo "Command: npm run build	"
+	$SUDO npm run build	
+	$SUDO cd ..
 }
 
 #internetCheck
