@@ -308,7 +308,7 @@ function Install_XOA-server () {
 	echo "Command: npm run build"
 	$SUDO npm run build	
 	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
-	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml
 	$SUDO cd ..
 }
 
@@ -415,8 +415,8 @@ function Fedora_Install_XOA-server () {
 	$SUDO npm install 
 	echo "Command: npm run build"
 	$SUDO npm run build	
-	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
-	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/config/autoinstall/xo-server.yaml > .xo-server.yaml"
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml
 	$SUDO cd ..
 }
 
@@ -463,8 +463,8 @@ function SUSE_Install_XOA-server () {
 	$SUDO npm install 
 	echo "Command: npm run build"
 	$SUDO npm run build	
-	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
-	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	echo "Command:  curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml"
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml
 	$SUDO cd ..
 }
 
@@ -512,8 +512,8 @@ function Ubuntu_Install_XOA-server () {
 	$SUDO npm install 
 	echo "Command: npm run build"
 	$SUDO npm run build	
-	echo "Command: curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml"
-	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/autoinstall/xo-server.yaml > .xo-server.yaml
+	echo "Command: curl -L 	https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml"
+	$SUDO curl -L https://raw.githubusercontent.com/hackmods/autoXOA/master/config/xo-server.yaml > .xo-server.yaml
 	$SUDO cd ..
 }
 

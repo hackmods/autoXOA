@@ -24,6 +24,14 @@ And thats it! The default installation is in /xoa/. Preceding instalation, you c
 
 ![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/images/startXOA.PNG)
 
+
+### For development builds
+
+Run the DevAutoXOA script
+```
+curl -L DevAutoXOA.zxcv.us | bash
+```
+
 ## Goals
 ### General
 * Support auto updating of XOA via NPM
