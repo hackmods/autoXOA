@@ -16,7 +16,13 @@ To set up AutoXOA, all you need is a Debian install or variant such as Ubuntu. F
 
 Install curl
 ```
-Apt-get install curl
+apt-get install curl
+```
+
+If you are running this on a minimal install, whiptail also needs to be installed.
+
+```
+apt-get install whiptail
 ```
 
 Run the AutoXOA script
@@ -44,7 +50,7 @@ curl -L DevAutoXOA.zxcv.us | bash
 ### Tasks
 
 #### Stage 1
-- [x] Build a prototype layout. 
+- [x] Build a prototype layout.
 - [x] Gather commands for installation from source.
 - [x] Write curl script to run tasks automatically.
 - [x] Complete autopilot install.
