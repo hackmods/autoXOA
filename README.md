@@ -24,6 +24,7 @@ If you are running this on a minimal install, whiptail also needs to be installe
 ```
 apt-get install whiptail
 ```
+If you are running on Ubuntu, you must run it under sudo -i for the bash script to function.
 
 Run the AutoXOA script
 ```
