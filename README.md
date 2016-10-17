@@ -14,9 +14,23 @@ The AutoXOA project installs and configures [Xen Orchestra](https://xen-orchestr
 
 To set up AutoXOA, all you need is a Debian install or variant such as Ubuntu. First install curl. Execute the preceding curl command to retrieve and run the autoXOA script.
 
+## Instructions
+
+To set up AutoXOA, all you need is a Debian install or variant such as Ubuntu. First install curl. Execute the preceding curl command to retrieve and run the autoXOA script.
+
 Install curl
 ```
-Apt-get install curl
+apt-get install curl
+```
+
+If you are running this on a minimal install, whiptail also needs to be installed.
+```
+apt-get install whiptail
+```
+
+If you are running on Ubuntu, you must run it under sudo -i for the bash script to function.
+```
+sudo -i curl -L autoXOA.zxcv.us | bash
 ```
 
 Run the AutoXOA script
