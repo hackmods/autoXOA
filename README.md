@@ -1,8 +1,8 @@
 # AutoXOA - compile / install Xen Orchestra from source
 
-### For Xen Server 6.X
+### For Xen Server 7.X
 
-This branch is developed to work with Xen Server 6.X, developed on Xen Server 6.5. As version 7 of Xenserver has launched, future deveoples may break compatability. Thus the creation of this branch.
+This branch is developed to work with Xen Server 7.X, developed on XenServer 7. The script will grab the latest versions of XOA-server and XOA-web. For legacy XenServer 6.X users the new web module still should work. IF legacy support is needed for XenServer 6.X check out [branch Version-6.X](https://github.com/hackmods/autoXOA/tree/Version-6.X).
 
 ## Purpose
 
@@ -20,11 +20,14 @@ apt-get install curl
 ```
 
 If you are running this on a minimal install, whiptail also needs to be installed.
-
 ```
 apt-get install whiptail
 ```
+
 If you are running on Ubuntu, you must run it under sudo -i for the bash script to function.
+```
+sudo -i curl -L autoXOA.zxcv.us | bash
+```
 
 Run the AutoXOA script
 ```
