@@ -1,4 +1,4 @@
-# AutoXOA - compile / install Xen Orchestra from source
+# AutoXOA - compile / install Xen Orchestra V4 from source
 
 ### For Xen Server 6.X / Xen Orchestra 4
 
