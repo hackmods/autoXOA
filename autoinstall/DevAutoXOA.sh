@@ -300,8 +300,8 @@ function UpgradeBeta() {
 
 function Install_XOA-server () {
 	$SUDO cd /xoa
-	echo "Command: git clone -b stable http://github.com/vatesfr/xo-server"
-	$SUDO git clone -b stable http://github.com/vatesfr/xo-server
+	echo "Command: git clone -b stable http://github.com/vatesfr/xo-server legacy branch"
+	$SUDO git clone -b stable https://github.com/vatesfr/xo-server/tree/5472be8b72282aa245d27696cb2bf4ee3c9beee7
 	$SUDO cd xo-server
 	echo "Command: npm install"
 	$SUDO npm install 
@@ -314,8 +314,8 @@ function Install_XOA-server () {
 
 function Install_XOA-web () {
 	$SUDO cd /xoa
-	echo "Command: git clone -b stable http://github.com/vatesfr/xo-web"
-	$SUDO git clone -b stable http://github.com/vatesfr/xo-web
+	echo "Command: git clone -b stable https://github.com/vatesfr/xo-web/tree/v4"
+	$SUDO git clone -b stable https://github.com/vatesfr/xo-web/tree/v4
 	$SUDO cd xo-web
 	echo "Command: npm install"
 	$SUDO npm install
