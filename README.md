@@ -1,6 +1,6 @@
 # AutoXOA - compile / install Xen Orchestra from source
 
-### For Xen Server 6.X
+### For Xen Server 6.X / Xen Orchestra 4
 
 This branch is developed to work with Xen Ochestra 4 for Xen Server 6.X, developed on Xen Server 6.5. As version 7 of Xenserver has launched, future developes may break compatibility. Thus the creation of this branch.
 
