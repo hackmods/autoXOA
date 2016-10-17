@@ -2,11 +2,11 @@
 
 ### For Xen Server 6.X
 
-This branch is developed to work with Xen Server 6.X, developed on Xen Server 6.5. As version 7 of Xenserver has launched, future developes may break compatibility. Thus the creation of this branch.
+This branch is developed to work with Xen Ochestra 4 for Xen Server 6.X, developed on Xen Server 6.5. As version 7 of Xenserver has launched, future developes may break compatibility. Thus the creation of this branch.
 
 ## Purpose
 
-The AutoXOA project installs and configures [Xen Orchestra](https://xen-orchestra.com/#!/) from source. The purpose is to automate the procedure for developer environments and home lab use.
+The AutoXOA project installs and configures [Xen Orchestra](https://xen-orchestra.com/#!/) V4 from their legacy branch source. The purpose is to automate the procedure for developer environments and home lab use.
 
 ![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/images/InstallMenu.png)
 
