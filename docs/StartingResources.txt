@@ -1,6 +1,0 @@
-Below is the starting point I used for autoXOA.
-
-https://github.com/bradgillap
-https://github.com/bradgillap/Informeshion
-
-Thanks again Brad.

@@ -47,6 +47,10 @@ Run the DevAutoXOA script
 curl -L DevAutoXOA.zxcv.us | bash
 ```
 
+### For script development
+
+If you would like to run a local web server to host your .sh file for ease of use, or to main stream script development, check out the sample Node app.
+
 ## Goals
 ### General
 * Support auto updating of XOA via NPM
@@ -73,7 +77,7 @@ curl -L DevAutoXOA.zxcv.us | bash
 There are currently no questions.
 
 ## License
-Copyright [2016] [Ryan Morris]
+Copyright [2017] [Ryan Morris]
 
 Licensed under the GNU General Public License v3.0.
 

@@ -1,0 +1,17 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "A node server to host autoxoa install file.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "hackmods",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "fs": "0.0.1-security"
+  }
+}
