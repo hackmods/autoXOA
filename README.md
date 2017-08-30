@@ -34,7 +34,7 @@ apt-get install whiptail
 
 If you are running on Ubuntu, you must run it under sudo -i for the bash script to function.
 ```
-sudo -i curl -L autoXOA.zxcv.us | bash
+curl -L autoXOA.zxcv.us | sudo -i bash
 ```
 
 ![AutoXOA Install Menu](https://raw.githubusercontent.com/hackmods/autoXOA/master/images/startXOA.PNG)
