@@ -77,7 +77,6 @@ If you would like to run a local web server to host your .sh file for ease of us
 There are currently no questions.
 
 ## License
-Copyright [2017] [Ryan Morris]
 
 Licensed under the GNU General Public License v3.0.
 
